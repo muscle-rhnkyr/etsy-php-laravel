@@ -311,7 +311,8 @@ class EtsyApi
     {
         $method = $this->methods[$arguments['method']];
         $args = $arguments['args'];
-        $params = $this->prepareParameters($args['params']);
+        //$params = $this->prepareParameters($args['params']);
+        $params = $args['params'];
         $data = @$this->prepareData($args['data']);
 
         $uri = preg_replace_callback('@:(.+?)(\/|$)@', function ($matches) use ($args) {
