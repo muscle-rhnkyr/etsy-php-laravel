@@ -311,7 +311,6 @@ class EtsyApi
     {
         $method = $this->methods[$arguments['method']];
         $args = $arguments['args'];
-        //$params = $this->prepareParameters($args['params']);
         $params = $args['params'];
         $data = @$this->prepareData($args['data']);
 
@@ -451,26 +450,6 @@ class EtsyApi
             'name' => $key,
             'contents' => fopen($data[$key], 'r')
         ]];
-    }
-
-    /**
-     * @param $params
-     * @return array
-     */
-    private function prepareParameters($params)
-    {
-        $query_pairs = array();
-        $allowed = array("limit", "offset", "page", "sort_on", "sort_order", "include_private", "language");
-
-        if ($params) {
-            foreach ($params as $key => $value) {
-                if (in_array($key, $allowed)) {
-                    $query_pairs[$key] = $value;
-                }
-            }
-        }
-
-        return $query_pairs;
     }
 
     /**
